@@ -100,119 +100,126 @@
 
     鼠标移入显示下拉菜单，鼠标移出隐藏下拉菜单
 
-- 训练提示
-
-    1.获取要操作的“微博”和下拉菜单元素
-
-    2.给“微博”注册鼠标移入事件，显示下拉菜单
-
-    3.给“微博”注册鼠标移出事件，隐藏下拉菜单
-
 ```html
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
         * {
-            padding: 0;
             margin: 0;
-            box-sizing: border-box;
+            padding: 0;
         }
         li {
             list-style: none;
         }
         a {
-            color: #4c4c4c;
             text-decoration: none;
-        }
-        .top-nav {
-            margin-left: 20px;
-            width: 70px;
-            height: auto;
-        }
-        .nav-content {
-            border: 1px solid #fcfcfc;
-            border-bottom: none;
-        }
-        .nav-content, .nav-body li a {
-            display: inline-block;
-            width: 70px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
             font-size: 14px;
         }
-        .nav-weibo {
-            margin-right: 5px;
+        .nav {
+            margin: 100px;
         }
-        .nav-arrow {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: url(../仿新浪下拉菜单/icon.png) no-repeat 0 -977px;
+        .nav>li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 41px;
+            text-align: center;
         }
-        .nav-body {
+        .nav>li>a:hover {
+            background-color: #eee;
+        }
+        .nav li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 41px;
+            color: #333;
+        }
+        .nav ul {
             display: none;
-        }
-        .nav-body li a {
-            padding-left: 10px;
-            font-style: italic;
-            text-align: left;
+            position: absolute;
+            top: 41px;
+            left: 0;
+            width: 100%;
             border: 1px solid #FECC5B;
             border-top: none;
         }
-        .nav-body a:hover {
-            color: #ff8400;
+        .nav ul li a:hover {
+            background-color: #FFF5DA;
         }
     </style>
+</head>
 <body>
-    <div class="top-nav">
-        <div class="nav-header">
-            <div class="top-menu">
-                <a href="" class="nav-content">
-                    <i class="nav-weibo">微博</i>
-                    <span class="nav-arrow"></span> 
-                </a>
-                <div class="nav-body">
-                    <ul>
-                        <li>
-                            <a href="">
-                                私信
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                关于
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                @我
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul class="nav">
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">微博</a>
+            <ul>
+                <li>
+                    <a href="#">评论</a>
+                </li>
+                <li>
+                    <a href="#">私信</a>
+                </li>
+                <li>
+                    <a href="#">@我</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
     <script>
-        var menu = document.querySelector('.top-menu');
-        var body = document.querySelector('.nav-body');
-        var lis = document.querySelectorAll('li');
-        var content = document.querySelector('.nav-content');
-        menu.onmouseover = function() {
-            body.style.display = 'block';
-            content.style.color = '#ff8400';
-            content.style.backgroundColor = 'rgba(0, 0, 0, .2)';
-        }
-        menu.onmouseout = function() {
-            body.style.display = 'none';
-            content.style.color = '';
-            content.style.backgroundColor = '';
-        }
+        var nav = document.querySelector('.nav');
+        var lis = nav.children;
         for (var i = 0; i < lis.length; i++) {
             lis[i].onmouseover = function() {
-                this.style.backgroundColor = '#fff5da';
+                this.children[1].style.display = 'block';
             }
             lis[i].onmouseout = function() {
-                this.style.backgroundColor = '';
+                this.children[1].style.display = 'none';
             }
         }
     </script>
